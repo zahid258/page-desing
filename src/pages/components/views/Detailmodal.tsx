@@ -1,6 +1,6 @@
 import { useEffect, FC } from 'react';
 import Image from 'next/image';
-import { User } from '../types'; // Import the shared User type
+import User from '../types';
 
 interface DetailmodalProps {
   isOpen: boolean;

@@ -6,21 +6,9 @@ import TopHeading from './components/nav/TopHeading';
 import SwitchView from './components/SwitchView';
 import GridView from './components/views/GridView';
 import TileView from './components/views/TileView';
+import User from './components/types';
 
-// Define a TypeScript interface for user data
-interface User {
-  id: number;
-  imageUrl: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  contactNumber: string;
-  age: number;
-  dob: string;
-  salary: number;
-  address: string;
-}
-
+// Define a TypeScript interface for user datad
 // Define the type for the View state
 type ViewType = 'grid' | 'tile';
 

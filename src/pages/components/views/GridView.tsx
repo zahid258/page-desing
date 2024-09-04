@@ -1,18 +1,9 @@
 import React, { useState, FC } from 'react';
 import Image from 'next/image';
 import Detailmodal from './Detailmodal';
+import User from '../types';
 
 // Define types for the props
-interface User {
-  id: string;
-  firstName: string;
-  lastName: string;
-  dob: string;
-  contactNumber: string;
-  address: string;
-  salary: string;
-}
-
 interface GridViewProps {
   openModal: () => void;
   isModalOpen: boolean;
