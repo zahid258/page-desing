@@ -6,7 +6,7 @@ interface SwitchViewProps {
   view: 'grid' | 'tile';
 }
 
-export const SwitchView: React.FC<SwitchViewProps> = ({ setView, view }) => {
+const SwitchView: React.FC<SwitchViewProps> = ({ setView, view }) => {
   return (
     <div className="flex justify-end lg:w-5/6 mx-auto my-2 gap-2 px-4">
       <div
@@ -54,3 +54,5 @@ export const SwitchView: React.FC<SwitchViewProps> = ({ setView, view }) => {
     </div>
   );
 };
+
+export default SwitchView;

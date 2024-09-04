@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import Navbar from './components/nav/Navbar';
 import { motion } from 'framer-motion';
-
-import { TopHeading } from './components/nav/TopHeading';
-import { GridView } from './components/views/GridView';
-import { TileView } from './components/views/TileView';
-import { SwitchView } from './components/SwitchView';
+import TopHeading from './components/nav/TopHeading';
+import SwitchView from './components/SwitchView';
+import GridView from './components/views/GridView';
+import TileView from './components/views/TileView';
 
 // Define a TypeScript interface for user data
 interface User {

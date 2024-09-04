@@ -13,7 +13,7 @@ interface TileViewProps {
 }
 
 // Convert the component to TypeScript by adding type annotations
-export const TileView: FC<TileViewProps> = ({
+const TileView: FC<TileViewProps> = ({
   openModal,
   isModalOpen,
   closeModal,
@@ -176,3 +176,5 @@ export const TileView: FC<TileViewProps> = ({
     </div>
   );
 };
+
+export default TileView;

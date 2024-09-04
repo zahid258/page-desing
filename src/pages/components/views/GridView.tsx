@@ -21,7 +21,7 @@ interface GridViewProps {
 }
 
 // Convert the component to TypeScript by adding type annotations
-export const GridView: FC<GridViewProps> = ({
+const GridView: FC<GridViewProps> = ({
   openModal,
   isModalOpen,
   closeModal,
@@ -103,3 +103,5 @@ export const GridView: FC<GridViewProps> = ({
     </div>
   );
 };
+
+export default GridView;
