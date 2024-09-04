@@ -1,8 +1,15 @@
 import React, { useState, FC } from 'react';
 import Image from 'next/image';
 import Detailmodal from './Detailmodal';
-import User from '../types';
-
+interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  dob: string;
+  contactNumber: string;
+  address: string;
+  salary: string;
+}
 // Define types for the propsd
 interface TileViewProps {
   openModal: () => void;

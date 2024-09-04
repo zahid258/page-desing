@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
 import Navbar from './components/nav/Navbar';
-import { motion } from 'framer-motion';
 import TopHeading from './components/nav/TopHeading';
 import SwitchView from './components/SwitchView';
 import GridView from './components/views/GridView';
 import TileView from './components/views/TileView';
-import User from './components/types';
-
+interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  dob: string;
+  contactNumber: string;
+  address: string;
+  salary: string;
+}
 // Define a TypeScript interface for user datad
 // Define the type for the View state
 type ViewType = 'grid' | 'tile';
