@@ -1,5 +1,5 @@
 // types.ts
-export interface User {
+export default interface User {
   id: string;
   firstName: string;
   lastName: string;
