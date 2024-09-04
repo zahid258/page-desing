@@ -1,7 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect, FC } from 'react';
 import Image from 'next/image';
+import { User } from '../types'; // Import the shared User type
 
-const Detailmodal = ({ isOpen, onClose, users, userId }) => {
+interface DetailmodalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  users: User[];
+  userId: string;
+}
+
+const Detailmodal: FC<DetailmodalProps> = ({
+  isOpen,
+  onClose,
+  users,
+  userId,
+}) => {
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
     return () => {
@@ -11,7 +24,8 @@ const Detailmodal = ({ isOpen, onClose, users, userId }) => {
 
   if (!isOpen) return null;
 
-  const findUserById = (id) => users.find((user) => user.id === id);
+  const findUserById = (id: string): User | undefined =>
+    users.find((user) => user.id === id);
 
   const user = findUserById(userId);
 
@@ -30,7 +44,7 @@ const Detailmodal = ({ isOpen, onClose, users, userId }) => {
             <Image
               className="w-24 h-24 mb-3 rounded-full shadow-lg"
               src="/assests/images/profile-picture-3.jpg"
-              alt="Bonnie image"
+              alt="User image"
               width={96}
               height={96}
             />
@@ -38,15 +52,17 @@ const Detailmodal = ({ isOpen, onClose, users, userId }) => {
               {user.firstName} {user.lastName}
             </h5>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              Age: {user.age}
+              Age: {user.dob}{' '}
+              {/* Assuming dob represents age or you can adjust accordingly */}
             </span>
+            {/* Adjust the rest of the fields as needed */}
             <div className="flex justify-between w-full px-7 py-2 border-b border-gray-200 hover:bg-blue-200 cursor-pointer">
               <span className="font-bold text-black">Second Name:</span>
               <span>{user.lastName}</span>
             </div>
             <div className="flex justify-between w-full px-7 py-2 border-b border-gray-200 hover:bg-blue-200 cursor-pointer">
-              <span className="font-bold text-black">Email:</span>
-              <span>{user.email}</span>
+              <span className="font-bold text-black">DOB:</span>
+              <span>{user.dob}</span>
             </div>
             <div className="flex justify-between w-full px-7 py-2 border-b border-gray-200 hover:bg-blue-200 cursor-pointer">
               <span className="font-bold text-black">Phone:</span>
@@ -55,6 +71,10 @@ const Detailmodal = ({ isOpen, onClose, users, userId }) => {
             <div className="flex justify-between w-full px-7 py-2 border-b border-gray-200 hover:bg-blue-200 cursor-pointer">
               <span className="font-bold text-black">Address:</span>
               <span>{user.address}</span>
+            </div>
+            <div className="flex justify-between w-full px-7 py-2 border-b border-gray-200 hover:bg-blue-200 cursor-pointer">
+              <span className="font-bold text-black">Salary:</span>
+              <span>{user.salary}</span>
             </div>
           </div>
           <button

@@ -1,8 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import Image from 'next/image';
 import Detailmodal from './Detailmodal';
-export const GridView = ({ openModal, isModalOpen, closeModal, users }) => {
-  const [userId, setUserId] = useState('');
+
+// Define types for the props
+interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  dob: string;
+  contactNumber: string;
+  address: string;
+  salary: string;
+}
+
+interface GridViewProps {
+  openModal: () => void;
+  isModalOpen: boolean;
+  closeModal: () => void;
+  users: User[];
+}
+
+// Convert the component to TypeScript by adding type annotations
+export const GridView: FC<GridViewProps> = ({
+  openModal,
+  isModalOpen,
+  closeModal,
+  users,
+}) => {
+  const [userId, setUserId] = useState<string>('');
+
   return (
     <div className="grid 3xl:grid-cols-4 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 xxs:grid-cols-1 lg:w-5/6 sm:w-full mx-auto my-2 sm:px-4 gap-3">
       {users.map((user) => (
@@ -41,7 +67,7 @@ export const GridView = ({ openModal, isModalOpen, closeModal, users }) => {
               <span className="text-right">{user.address}</span>
             </div>
             <div className="flex justify-between w-full px-7 py-2 border-b border-gray-200 hover:bg-blue-200 cursor-pointer">
-              <span className="font-bold text-black">salary:</span>
+              <span className="font-bold text-black">Salary:</span>
               <span className="text-right">{user.salary}</span>
             </div>
 

@@ -1,20 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+
 import Navbar from './components/nav/Navbar';
 import { motion } from 'framer-motion';
-import Detailmodal from './components/views/Detailmodal';
+
 import { TopHeading } from './components/nav/TopHeading';
 import { GridView } from './components/views/GridView';
 import { TileView } from './components/views/TileView';
 import { SwitchView } from './components/SwitchView';
 
-export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [view, setView] = useState('grid');
+// Define a TypeScript interface for user data
+interface User {
+  id: number;
+  imageUrl: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  contactNumber: string;
+  age: number;
+  dob: string;
+  salary: number;
+  address: string;
+}
+
+// Define the type for the View state
+type ViewType = 'grid' | 'tile';
+
+const Home: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [view, setView] = useState<ViewType>('grid');
+  const [users, setUsers] = useState<User[]>([]);
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  const [user, setUser] = useState([]);
 
   useEffect(() => {
     // Fetch data from the public API
@@ -22,9 +40,9 @@ export default function Home() {
       try {
         const response = await fetch(
           'https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001'
-        ); // Replace with your actual API endpoint
-        const data = await response.json();
-        setUser(data);
+        );
+        const data: User[] = await response.json();
+        setUsers(data);
       } catch (error) {
         console.error('Error fetching user data:', error);
       } finally {
@@ -34,6 +52,7 @@ export default function Home() {
 
     fetchUserData();
   }, []);
+
   return (
     <main className="flex flex-col items-center justify-between">
       <div className="z-10 w-full items-center justify-between font-mono">
@@ -41,23 +60,27 @@ export default function Home() {
         <Navbar />
         <SwitchView setView={setView} view={view} />
 
-        {view === 'grid' && user.length > 0 && !isLoading && (
+        {view === 'grid' && users.length > 0 && !isLoading && (
           <GridView
             openModal={openModal}
             isModalOpen={isModalOpen}
             closeModal={closeModal}
-            users={user}
+            //@ts-ignore
+            users={users}
           />
         )}
-        {view === 'tile' && user.length > 0 && !isLoading && (
+        {view === 'tile' && users.length > 0 && !isLoading && (
           <TileView
             openModal={openModal}
             isModalOpen={isModalOpen}
             closeModal={closeModal}
-            users={user}
+            //@ts-ignore
+            users={users}
           />
         )}
       </div>
     </main>
   );
-}
+};
+
+export default Home;
