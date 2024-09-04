@@ -3,15 +3,7 @@ import Image from 'next/image';
 import Detailmodal from './Detailmodal';
 
 // Define types for the props
-interface User {
-  id: string;
-  firstName: string;
-  lastName: string;
-  dob: string;
-  contactNumber: string;
-  address: string;
-  salary: string;
-}
+import { User } from '../types';
 
 interface TileViewProps {
   openModal: () => void;
