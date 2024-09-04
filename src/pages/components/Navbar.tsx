@@ -140,7 +140,7 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
           <a href="#" className="text-white hover:text-gray-400 p-4">
-            Support & FAQ's
+            Support & FAQs
           </a>
           <a href="#" className="text-white hover:text-gray-400 p-4">
             Contact
